@@ -1,6 +1,8 @@
 <template lang="pug">
 	#app
 		Navbar
+		.container
+			router-view
 </template>
 
 
