@@ -8,7 +8,7 @@
 				li.nav-item
 					router-link.nav-link(to='/') NEARBY SHOPS
 				li.nav-item(v-show='auth')
-					router-link.nav-link(to='/Preferred') MY PREFERRED SHOPS
+					router-link.nav-link(to='/preferred') MY PREFERRED SHOPS
 				li.nav-item(v-show='guest')
 					router-link.nav-link(to='/login') LOGIN
 				li.nav-item(v-show='guest')
@@ -21,8 +21,24 @@
 <script>
 	export default {
 		name: 'Navbar',
+		data() {
+			return {
+				
+			}
+		},
 		props: {
 			user: String
+		},
+		computed: {
+			auth() {
+				if(this.$store.state.isUserLoggedIn) {
+					return true
+				}
+				return false
+			},
+			guest() {
+				return !this.auth
+			}
 		}
 	}
 </script>
